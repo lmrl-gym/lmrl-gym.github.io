@@ -212,8 +212,8 @@
               <ul>
                 <li><strong>Strategic decision making:</strong> RL shines in goal-directed tasks that require multi-step planning and strategic decision making, such as follow-up questions to gather information (e.g., in the 20 Questions task), to complex strategy in chess. </li>
                 <li><strong>Complex language:</strong> Our benchmark includes realistic language and interaction scenarios, with the aim of necessitating LLMs to combine knowledge from pretraining with task-specific patterns learned during finetuning.</li>
-                <li><strong>Credit assignment:</strong> We evaluate the ability of RL algorithms to determine trajectories that lead to the good outcome, and reinforce them.</li>
-                <li><strong>Partial observability:</strong> For language tasks, the state consists of the entire history of tokens, and an agent may need to examine this entire context to infer the correct state.</li>
+                <li><strong>Credit assignment:</strong> As rewards are often delayed relative to the action that was pivotal to the outcome, we evaluate the ability of RL algorithms to determine trajectories that lead to good outcomes, and reinforce them.</li>
+                <li><strong>Partial observability:</strong> For language tasks, the state consists of the entire history of tokens, and an agent may need to examine this entire context to infer the correct state. This is tested through algorithms learning the mental states of the speaker (e.g., whether the buyer is impatient in a selling task) or previously observed facts in a guessing game. </li>
                 <li><strong>Trajectory stitching:</strong> It is necessary for algorithms to learn how to join optimal actions from different suboptimal trajectories together to form the most optimal trajectory</li>
               </ul>
             </div>
