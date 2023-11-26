@@ -186,26 +186,53 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
+
+
           <p>
-          Large language models (LLMs) provide excellent text-generation capabilities, but standard prompting and generation methods generally do not lead to intentional or goal-directed agents and might necessitate considerable prompt tuning. 
-          This becomes particularly apparent in multi-turn conversations: even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions now that lead to better decisions after multiple turns. 
+            Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework containing a basic toolkit for getting started on multi-turn RL with offline value-based and policy-based RL methods. 
+           The motivation behind our work is particularly apparent in multi-turn conversations: even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions now that lead to better decisions after multiple turns. 
           Reinforcement learning has the potential to leverage the powerful modeling capabilities of LLMs, as well as their internal representation of textual interactions, to create capable goal-directed language agents. This can enable intentional and temporally extended interactions, such as with humans, through coordinated persuasion and carefully crafted questions, or in goal-directed play through text games to bring about desired final outcomes. 
-          However, enabling this requires the community to develop stable and reliable reinforcement learning algorithms that can effectively train LLMs. Developing such algorithms requires tasks that can gauge progress on algorithm design, provide accessible and reproducible evaluations for multi-turn interactions, and cover a range of task properties and challenges in improving reinforcement learning algorithms. 
-         </p>
-         <p>
-          Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework containing a basic toolkit for getting started on multi-turn RL with offline value-based and policy-based RL methods. 
-          Our benchmark consists of 8 different language tasks, which require multiple rounds of language interaction and cover a range of tasks in open-ended dialogue and text games.
-         </p>
+          Our contributions are: 
+
+          <div class="content has-text-justified">
+            <p>
+              Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework containing a basic toolkit for getting started on multi-turn RL with offline value-based and policy-based RL methods. 
+              The motivation behind our work is particularly apparent in multi-turn conversations: even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions now that lead to better decisions after multiple turns. 
+            </p>
+            <ul>
+              <li> Eight different language tasks which require multiple rounds of language interaction and cover a range of tasks in open-ended dialogue and text games. Each task has both an online simulator and offline datasets avaliable for training.</li>
+              <li> Stable and reliable research framework with reinforcement learning algorithms that can effectively train LLMs. </li>
+              <li> Methodology for synthetic data generation system to create further datasets for RL-LLM algorithm development</li>
+              <li> Design of tasks that isolate specific RL capabilities to test succes of algorithms</li>
+              <li></li>
+
+            </ul>
+          </div>
+
+         <div class="content has-text-justified">
+          <p>
+            A central objective of our benchmark is to evaluate the core capabilities that RL can enable in large language models. Some of these capabilities are <em>computational</em>, and relate to core decision making irrespective of the considerations of natural language, such as playing chess, while others are semantic. These include: 
+          </p>
+          <ul>
+            <li><strong>Strategic decision making:</strong> RL shines in goal-directed tasks that require multi-step planning and strategic decision making, such as follow-up questions to gather information (e.g., in the 20 Questions task), to complex strategy in chess. </li>
+            <li><strong>Complex language:</strong> Our benchmark includes realistic language and interaction scenarios, with the aim of necessitating LLMs to combine knowledge from pretraining with task-specific patterns learned during finetuning.</li>
+            <li><strong>Credit assignment:</strong> As rewards are often delayed relative to the action that was pivotal to the outcome, we evaluate the ability of RL algorithms to determine trajectories that lead to good outcomes, and reinforce them.</li>
+            <li><strong>Partial observability:</strong> For language tasks, the state consists of the entire history of tokens, and an agent may need to examine this entire context to infer the correct state. This is tested through algorithms learning the mental states of the speaker (e.g., whether the buyer is impatient in a selling task) or previously observed facts in a guessing game. </li>
+            <li><strong>Trajectory stitching:</strong> It is necessary for algorithms to learn how to join optimal actions from different suboptimal trajectories together to form the most optimal trajectory</li>
+          </ul>
+        </div>
 
         </div>
       </div>
     </div>
     <section class="section">
       <div class="container is-max-desktop">
-        <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">Evaluating Capabilities Enabled by RL</h2>
+            <div class="capabilities-image">
+              <img src="static/images/properties_table.png" alt="LMRL-Gym Tasks Image" style="width: 100%; height: auto;">
+            </div>
             <div class="content has-text-justified">
               <p>
                 A central objective of our benchmark is to evaluate the core capabilities that RL can enable in large language models. Some of these capabilities are <em>computational</em>, and relate to core decision making irrespective of the considerations of natural language, such as playing chess, while others are semantic. These include: 
@@ -241,6 +268,7 @@
     <br>
     <br>
 
+    
     <section class="hero">
       <!-- Paper motivation. -->
       <div class="columns is-centered has-text-centered">
@@ -259,13 +287,14 @@
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">How can I use this benchmark?</h2>
+            <h2 class="title is-3">Our Results</h2>
             <div class="content has-text-justified">
               <p>
-              We have open-sourced datasets and our research framework above to allow for the developmnent of further RL algorithms and benchmarks. 
-              Our paper provides details of our evaluation protocol and statistics for dataset curation and evaluation. 
-
+                We evaluate our tasks on a set of both online and offline RL algorithms. To make the results more comparable across tasks, we normalize the average return for each policy such that 0 is the minimum possible return, 50 is the dataset average return, and 100 is the maximum return for each task. We also report the raw score results and evaluation details in our Appendix.
               </p>
+              <div class="results-image">
+                <img src="static/images/results.png" alt="LMRL-Gym Tasks Image" style="width: 50%; height: auto;">
+              </div>
             </div>
           </div>
         </div>
